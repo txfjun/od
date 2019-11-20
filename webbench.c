@@ -163,6 +163,7 @@ int main(int argc, char *argv[])
  
  if(optind==argc) {
                       fprintf(stderr,"webbench: Missing URL!\n");
+                      fprintf(stderr,"argc=%d optind=%d\n",argc,optind);
 		      usage();
 		      return 2;
                     }
@@ -173,6 +174,8 @@ int main(int argc, char *argv[])
  fprintf(stderr,"Webbench - Simple Web Benchmark "PROGRAM_VERSION"\n"
 	 "Copyright (c) Radim Kolar 1997-2004, GPL Open Source Software.\n"
 	 );
+
+ printf("argv [optind]=%s\n",argv[optind]);
  build_request(argv[optind]);
  /* print bench info */
  printf("\nBenchmarking: ");
@@ -298,7 +301,7 @@ void build_request(const char *url)
 	  strcat(request,"Connection: close\r\n");
   /* add empty line at end */
   if(http10>0) strcat(request,"\r\n"); 
-  // printf("Req=%s\n",request);
+   printf("Req=%s\n",request);
 }
 
 /* vraci system rc error kod */
